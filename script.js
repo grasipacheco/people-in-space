@@ -3,19 +3,13 @@ console.log("sanity check");
 const peopleInSpace = document.querySelector('[data-js="people-in-space"]');
 
 async function getPeopleInSpace() {
-  try {
-    const response = await fetch("http://api.open-notify.org/astros.json");
-    const data = await response.json();
-    //peopleInSpace.textContent = peopleInSpace.number;
-    //const { people } = data;
-    //peopleInSpace.textContent = people;
-    //console.log(people[0].name);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await fetch("http://api.open-notify.org/astros.json");
+  const data = await response.json();
+  //peopleInSpace.textContent = peopleInSpace.number;
+  peopleInSpace.textContent = data.number;
+  peopleInSpaceData = data.people;
+  //console.log(data);
+  return data;
 }
 
-console.log(getPeopleInSpace);
-
-//const peopleInSpaceData = getPeopleInSpace();
+const peopleInSpaceData = getPeopleInSpace();
